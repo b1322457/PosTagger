@@ -8,6 +8,7 @@
 #endif //CRF_STRTOOL_H
 
 #include <iostream>
+#include <sstream>
 #include <vector>
 using namespace std;
 
@@ -69,6 +70,16 @@ using namespace std;
                 ret.append(str.begin() + pos_begin, str.end());
             }
             return ret;
+        }
+
+        u32string join(std::vector<std::u32string> const &words, char32_t delim) {
+            basic_ostringstream<char32_t> oss;
+            for (auto iter = words.cbegin(); iter != words.cend(); ++iter) {
+                if (iter != words.cbegin())
+                    oss << delim;
+                oss << *iter;
+            }
+            return oss.str();
         }
 
     }

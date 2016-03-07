@@ -4,6 +4,7 @@
 
 #include <tagger/crf/CRFTagger.h>
 #include <fstream>
+#include <tagger/preprocessor/strtool.h>
 
 
 CRFTagger::CRFTagger(const string &model):modelfile(model){
@@ -17,6 +18,7 @@ void CRFTagger::train(const string &dest_model) {
 }
 
 vector<string> CRFTagger::tag(vector<u32string> const &sentence) {
+    u32string joined_sentence=strtool::join(sentence,' ');
 
 }
 
