@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/tagger/Base_Tagger.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/tagger/crf/CRFTagger.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/tagger/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/tagger/preprocessor/PreProcessor.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/README.md" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />

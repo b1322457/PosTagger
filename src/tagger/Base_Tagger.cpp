@@ -17,3 +17,15 @@ Base_Tagger *Base_Tagger::load(std::string const &model_path, std::string const 
     }
     return Tagger;
 }
+Base_Tagger *Base_Tagger::create_Tagger(rapidjson::Document const &config, std::string const &Tagger_name) {
+    Base_Tagger *Tagger;
+    if (Tagger_name == "CRF") {
+        Tagger =  new CRFTagger(config);
+    }
+    else {
+        std::string msg{"unknown Tagger name: "};
+        msg += Tagger_name;
+        throw msg;
+    }
+    return Tagger;
+}

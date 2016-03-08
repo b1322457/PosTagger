@@ -10,6 +10,10 @@
 CRFTagger::CRFTagger(const string &model):modelfile(model){
 
 }
+CRFTagger::CRFTagger(const rapidjson::Document &config){
+    template_path=config["template_path"].GetString();
+    corpus_path = config["corpus_path"].GetString();
+}
 
 
 void CRFTagger::train(const string &dest_model) {
@@ -19,7 +23,17 @@ void CRFTagger::train(const string &dest_model) {
 
 vector<string> CRFTagger::tag(vector<u32string> const &sentence) {
     u32string joined_sentence=strtool::join(sentence,' ');
-
+    string u8_sentence=strtool::To_UTF8(joined_sentence);
+    string sentence_file=strtool::gen_filename("sen_file");
+    ifstream out(sentence_file);
+    out<<u8_sentence<<endl;
+    out.close();
+    string ret_file=strtool::gen_filename("ret_file");
+    preProcessor.test_model(this->modelfile,sentence_file,ret_file);
+    vector<string>res = preProcessor.model_file_for_tag_ret(ret_file);
+    //remove(sentence_file);
+    //remove(ret_file);
+    return res;
 }
 
 bool CRFTagger::save(string const &model_path) {

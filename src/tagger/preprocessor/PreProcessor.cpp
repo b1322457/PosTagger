@@ -7,6 +7,7 @@
 #include <fstream>
 #include <tagger/preprocessor/strtool.h>
 #include <tagger/crf/crfpp.h>
+#include <sstream>
 
 string PreProcessor::modify_file_for_train(const string &rawfile) {
     ifstream in(rawfile,ios::in);
@@ -38,7 +39,7 @@ string PreProcessor::modify_file_for_train(const string &rawfile) {
     }
 }
 
-void PreProcessor::train_model(const string &_template, const string &stand_file, const string &modelname) {
+int PreProcessor::train_model(const string &_template, const string &stand_file, const string &modelname) {
     vector<string>args;
     args.push_back("crf_learn");
     args.push_back("-f");
@@ -53,6 +54,45 @@ void PreProcessor::train_model(const string &_template, const string &stand_file
     {
         argv[i]=const_cast<char*>(args[i].c_str());
     }
-    crfpp_learn(args.size(),argv);
+    return crfpp_learn(args.size(),argv);
+}
+
+int PreProcessor::test_model(const string &model, const string &stand_file, const string &dest_file){
+    vector<string>args;
+    args.push_back("crf_test");
+    args.push_back("-m");
+    args.push_back(model);
+    args.push_back(stand_file);
+    args.push_back("-o");
+    args.push_back(dest_file);
+    char *argv[8];
+    for(int i=0;i<args.size();i++){
+        argv[i]= const_cast<char*>(args[i].c_str());
+    }
+    return crfpp_test(args.size(),argv);
+}
+
+vector<string>PreProcessor::model_file_for_tag_ret(const string &tmp){
+    ifstream in(tmp,ios::in);
+    vector<string>svec;
+    ostringstream ss;
+    if(in.is_open()){
+        while(!in.eof()){
+            string line;
+            getline(in,line);
+            if(line.empty()){
+                svec.push_back("\n");
+            }
+            else{
+                vector<string>w_h;
+                strtool::split(line,w_h,"\t");
+                ss<<w_h[0]<<"_"<<w_h[1];
+                svec.push_back(ss.str());
+            }
+        }
+        in.close();
+    } else{
+        exit(1);
+    }
 }
 

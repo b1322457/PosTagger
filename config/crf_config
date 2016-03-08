@@ -1,4 +1,4 @@
 {
    "template_path":"../template/template",
-   "corpus_path":"../corpus"
+   "corpus_path":"../corpus/corpus"
 }

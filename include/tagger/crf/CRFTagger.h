@@ -9,13 +9,14 @@
 #include <vector>
 #include <tagger/preprocessor/PreProcessor.h>
 #include <tagger/Base_Tagger.h>
+#include <rapidjson/document.h>
 
 using namespace std;
     class CRFTagger: public Base_Tagger {
     public:
         CRFTagger(const string &model);
-        virtual ~CRFTagger();
-        vector<string> tag(vector<string> const &sentence);
+        CRFTagger(const rapidjson::Document &config);
+        vector<string> tag(vector<u32string> const &sentence);
         void train(const string &dest_model);
         bool save(string const &model_path);
 

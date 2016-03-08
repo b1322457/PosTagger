@@ -10,6 +10,9 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <locale>
+#include <codecvt>
+#include <time.h>
 using namespace std;
 
     namespace strtool {
@@ -80,6 +83,17 @@ using namespace std;
                 oss << *iter;
             }
             return oss.str();
+        }
+
+        static wstring_convert<codecvt_utf8<char32_t>,char32_t> conv;
+        inline string To_UTF8(const u32string& from){
+            return conv.to_bytes(from);
+        }
+
+        string gen_filename(const string &suffix){
+            time_t rawtime;
+            time(&rawtime);
+            return to_string(long(&rawtime))+suffix;
         }
 
     }
