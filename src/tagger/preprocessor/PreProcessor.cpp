@@ -24,7 +24,7 @@ string PreProcessor::modify_file_for_train(const string &rawfile) {
             strtool::split(line,ret_," ");
             vector<string>w_h;
             for(string &word:ret_){
-                strtool::split(word,w_h,"/");
+                strtool::split(word,w_h,"_");
                 out<<w_h[0]<<"\t";
                 out<<w_h[1]<<"\n";
             }
