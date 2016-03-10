@@ -16,9 +16,9 @@ using namespace std;
     public:
         CRFTagger(const string &model);
         CRFTagger(const rapidjson::Document &config);
-        vector<string> tag(vector<u32string> const &sentence);
+        vector<string> predict(vector<u32string> const &sentence) const ;
         void train(const string &dest_model);
-        bool save(string const &model_path);
+        bool save(string const &model_path) ;
 
     private:
         string modelfile;

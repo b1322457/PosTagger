@@ -11,7 +11,7 @@ int main(int argc,char *argv[]){
     istreambuf_iterator<char> beg(in), end;
     string jsondata(beg, end);
     rapidjson::Document document;
-    document.Parse(jsondata);
+    document.Parse(jsondata.c_str());
     Base_Tagger *p=Base_Tagger::create_Tagger(document,"CRF");
     p->train("model1");
     return 0;

@@ -6,10 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/tagger/crf/CRFTagger.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/tagger/train.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/tagger/preprocessor/PreProcessor.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/README.md" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/tagger/Base_Tagger.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/tagger/crf/CRFTagger.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/tagger/preprocessor/PreProcessor.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
@@ -378,8 +375,6 @@
           <root url="file:///usr/local/include" />
         </SOURCES>
         <excluded>
-          <root url="file://$MODULE_DIR$/include/tagger/Base_Tagger.h" />
-          <root url="file://$MODULE_DIR$/include/tagger/crf/CRFTagger.h" />
           <root url="file://$MODULE_DIR$/include/tagger/preprocessor/PreProcessor.h" />
         </excluded>
       </library>

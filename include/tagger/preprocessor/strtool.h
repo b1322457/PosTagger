@@ -75,7 +75,7 @@ using namespace std;
             return ret;
         }
 
-        u32string join(std::vector<std::u32string> const &words, char32_t delim) {
+        /*u32string join(std::vector<std::u32string> const &words, char32_t delim) {
             basic_ostringstream<char32_t> oss;
             for (auto iter = words.cbegin(); iter != words.cend(); ++iter) {
                 if (iter != words.cbegin())
@@ -83,7 +83,7 @@ using namespace std;
                 oss << *iter;
             }
             return oss.str();
-        }
+        }*/
 
         static wstring_convert<codecvt_utf8<char32_t>,char32_t> conv;
         inline string To_UTF8(const u32string& from){

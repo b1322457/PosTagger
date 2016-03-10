@@ -13,8 +13,8 @@ using namespace std;
 class Base_Tagger {
 public:
     virtual void train(const string &dest_model)=0;
-    virtual std::vector<std::u32string> predict(std::u32string const &sentence) const = 0;
-    virtual bool save(std::string const &model_path) const = 0;
+    virtual vector<string> predict(vector<u32string> const &sentence) const = 0;
+    virtual bool save(std::string const &model_path) = 0;
     virtual ~Base_Tagger() {}
     static Base_Tagger * load(std::string const &model_path, std::string const &seger_name);
     static Base_Tagger * create_Tagger(rapidjson::Document const &config, std::string const &Tager_name);

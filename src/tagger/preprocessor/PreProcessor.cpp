@@ -9,7 +9,7 @@
 #include <tagger/crf/crfpp.h>
 #include <sstream>
 
-string PreProcessor::modify_file_for_train(const string &rawfile) {
+string PreProcessor::modify_file_for_train(const string &rawfile)  {
     ifstream in(rawfile,ios::in);
     time_t rawtime;
     time(&rawtime);
@@ -94,5 +94,6 @@ vector<string>PreProcessor::model_file_for_tag_ret(const string &tmp){
     } else{
         exit(1);
     }
+    return svec;
 }
 
