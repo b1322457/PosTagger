@@ -11,3 +11,8 @@ LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/lib)
 
 add_executable(train ${SOURCE_FILES})
 target_link_libraries(train crfpp)
+find_package(Boost REQUIRED COMPONENTS program_options)
+if(Boost_FOUND)
+    target_link_libraries(train ${Boost_LIBRARIES})
+    include_directories(${Boost_INCLUDE_DIRS})
+endif()
