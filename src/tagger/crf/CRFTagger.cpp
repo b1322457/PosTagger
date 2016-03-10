@@ -4,7 +4,8 @@
 
 #include <tagger/crf/CRFTagger.h>
 #include <fstream>
-#include <tagger/preprocessor/strtool.h>
+
+PreProcessor CRFTagger::preProcessor{};
 
 CRFTagger::CRFTagger(const string &model):modelfile(model){
 

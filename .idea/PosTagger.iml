@@ -7,7 +7,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/tagger/train.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/tagger/preprocessor/PreProcessor.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/tagger/preprocessor/PreProcessor.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
@@ -374,9 +373,6 @@
           <root url="file:///usr/include" />
           <root url="file:///usr/local/include" />
         </SOURCES>
-        <excluded>
-          <root url="file://$MODULE_DIR$/include/tagger/preprocessor/PreProcessor.h" />
-        </excluded>
       </library>
     </orderEntry>
   </component>

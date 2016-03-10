@@ -12,6 +12,7 @@
 #include <rapidjson/document.h>
 
 using namespace std;
+
     class CRFTagger: public Base_Tagger {
     public:
         CRFTagger(const string &model);
@@ -25,6 +26,7 @@ using namespace std;
         string template_path;
         string corpus_path;
         static PreProcessor preProcessor;
+
     };
 
 #endif //POSTAGGER_CRFTAGGER_H
