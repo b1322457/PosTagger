@@ -10,6 +10,7 @@
 #include <tagger/preprocessor/PreProcessor.h>
 #include <tagger/Base_Tagger.h>
 #include <rapidjson/document.h>
+#include <utility>
 
 using namespace std;
 
@@ -17,7 +18,7 @@ using namespace std;
     public:
         CRFTagger(const string &model);
         CRFTagger(const rapidjson::Document &config);
-        vector<string> predict(vector<u32string> const &sentence) const ;
+        vector< pair<string,string> > predict(vector<u32string> const &sentence) const ;
         void train(const string &dest_model);
         bool save(string const &model_path) ;
 

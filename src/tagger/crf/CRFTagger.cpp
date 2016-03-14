@@ -4,6 +4,9 @@
 
 #include <tagger/crf/CRFTagger.h>
 #include <fstream>
+#include <tagger/preprocessor/strtool.h>
+
+
 
 PreProcessor CRFTagger::preProcessor{};
 
@@ -19,22 +22,25 @@ CRFTagger::CRFTagger(const rapidjson::Document &config){
 void CRFTagger::train(const string &dest_model) {
     string modefied_train=preProcessor.modify_file_for_train(corpus_path);
     preProcessor.train_model(template_path,modefied_train,dest_model);
+    remove(modefied_train);
 }
 
-vector<string> CRFTagger::predict(vector<u32string> const &sentence)const {
-    /*u32string joined_sentence=strtool::join(sentence,' ');
-    string u8_sentence=strtool::To_UTF8(joined_sentence);
+vector< pair<string,string> > CRFTagger::predict(vector<u32string> const &sentence)const {
+
     string sentence_file=strtool::gen_filename("sen_file");
     ofstream out(sentence_file);
-    out<<u8_sentence<<endl;
+
+    for(auto pos=sentence.begin();pos!=sentence.end();pos++){
+        string u8_word=strtool::To_UTF8(*pos);
+        out<<u8_word<<endl;
+    }
     out.close();
     string ret_file=strtool::gen_filename("ret_file");
     preProcessor.test_model(this->modelfile,sentence_file,ret_file);
-    vector<string>res = preProcessor.model_file_for_tag_ret(ret_file);
-    //remove(sentence_file);
-    //remove(ret_file);
-    return res;*/
-    return vector<string>();
+    vector<pair<string,string>>res = preProcessor.model_file_for_tag_ret(ret_file);
+    remove(sentence_file);
+    remove(ret_file);
+    return res;
 }
 
 bool CRFTagger::save(string const &model_path){

@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/tagger/crf/CRFTagger.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/tagger/train.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/tagger/preprocessor/PreProcessor.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/tagger/preprocessor/strtool.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/tagger/predict.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />

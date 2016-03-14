@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 
+
 using namespace std;
 class PreProcessor {
 public:
@@ -18,7 +19,7 @@ public:
 
     int test_model(const string &model, const string &stand_file, const string &dest_file);
 
-    vector<string> model_file_for_tag_ret(const string &tmp);
+    vector<pair<string,string>> model_file_for_tag_ret(const string &tmp);
 };
 
 #endif //POSTAGGER_PREPROCESSOR_H

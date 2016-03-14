@@ -13,7 +13,7 @@ using namespace std;
 class Base_Tagger {
 public:
     virtual void train(const string &dest_model)=0;
-    virtual vector<string> predict(vector<u32string> const &sentence) const = 0;
+    virtual vector<pair<string,string>> predict(vector<u32string> const &sentence) const = 0;
     virtual bool save(std::string const &model_path) = 0;
     virtual ~Base_Tagger() {}
     static Base_Tagger * load(std::string const &model_path, std::string const &seger_name);

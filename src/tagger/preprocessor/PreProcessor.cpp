@@ -5,9 +5,10 @@
 #include <tagger/preprocessor/PreProcessor.h>
 #include <time.h>
 #include <fstream>
-#include <tagger/preprocessor/strtool.h>
 #include <tagger/crf/crfpp.h>
-#include <sstream>
+
+#include <tagger/preprocessor/strtool.h>
+
 
 string PreProcessor::modify_file_for_train(const string &rawfile)  {
     ifstream in(rawfile,ios::in);
@@ -72,22 +73,20 @@ int PreProcessor::test_model(const string &model, const string &stand_file, cons
     return crfpp_test(args.size(),argv);
 }
 
-vector<string>PreProcessor::model_file_for_tag_ret(const string &tmp){
+vector<pair<string,string>>PreProcessor::model_file_for_tag_ret(const string &tmp){
     ifstream in(tmp,ios::in);
-    vector<string>svec;
-    ostringstream ss;
+    vector<pair<string,string>>svec;
     if(in.is_open()){
         while(!in.eof()){
             string line;
             getline(in,line);
             if(line.empty()){
-                svec.push_back("\n");
+                svec.push_back({"\n","\n"});
             }
             else{
                 vector<string>w_h;
                 strtool::split(line,w_h,"\t");
-                ss<<w_h[0]<<"_"<<w_h[1];
-                svec.push_back(ss.str());
+                svec.push_back({w_h[0],w_h[1]});
             }
         }
         in.close();
