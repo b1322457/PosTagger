@@ -10,6 +10,7 @@
 #include <tagger/preprocessor/PreProcessor.h>
 #include <tagger/Base_Tagger.h>
 #include <rapidjson/document.h>
+#include <tagger/crf/crfpp.h>
 #include <utility>
 
 using namespace std;
@@ -23,7 +24,7 @@ using namespace std;
         bool save(string const &model_path) ;
 
     private:
-        string modelfile;
+        CRFPP::Tagger *tagger;
         string template_path;
         string corpus_path;
         static PreProcessor preProcessor;

@@ -58,41 +58,5 @@ int PreProcessor::train_model(const string &_template, const string &stand_file,
     return crfpp_learn(args.size(),argv);
 }
 
-int PreProcessor::test_model(const string &model, const string &stand_file, const string &dest_file){
-    vector<string>args;
-    args.push_back("crf_test");
-    args.push_back("-m");
-    args.push_back(model);
-    args.push_back(stand_file);
-    args.push_back("-o");
-    args.push_back(dest_file);
-    char *argv[8];
-    for(int i=0;i<args.size();i++){
-        argv[i]= const_cast<char*>(args[i].c_str());
-    }
-    return crfpp_test(args.size(),argv);
-}
 
-vector<pair<string,string>>PreProcessor::model_file_for_tag_ret(const string &tmp){
-    ifstream in(tmp,ios::in);
-    vector<pair<string,string>>svec;
-    if(in.is_open()){
-        while(!in.eof()){
-            string line;
-            getline(in,line);
-            if(line.empty()){
-                svec.push_back({"\n","\n"});
-            }
-            else{
-                vector<string>w_h;
-                strtool::split(line,w_h,"\t");
-                svec.push_back({w_h[0],w_h[1]});
-            }
-        }
-        in.close();
-    } else{
-        exit(1);
-    }
-    return svec;
-}
 
